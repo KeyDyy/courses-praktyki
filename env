@@ -1,3 +1,0 @@
-#password database = a9naGRDyaa6?kWK
-DATABASE_URL="postgresql://postgres:database@localhost:5432/postgres"
-
