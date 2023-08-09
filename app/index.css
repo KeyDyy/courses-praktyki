@@ -1,0 +1,28 @@
+.center-image {
+    width: 100% auto;
+    max-height: 25vw; /* Zmniejsza wysokość obrazka */
+    display: block;
+    margin-top: 3vw;
+    border-radius: 8px;
+    padding: 2px;
+  }
+  
+
+  .bottom-image {
+    width: 10%;
+    max-height: 15vw;
+    margin: 1% auto;
+  }
+
+  
+  .gallery > img:hover {
+    width: calc(var(--s)/2);
+  }
+  
+
+  
+  p {
+    margin-top: 2%;
+  }
+
+  

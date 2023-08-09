@@ -1,0 +1,47 @@
+/* App.module.css */
+.app {
+    padding: 20px;
+  }
+  
+  .gallery {
+    --z: 1px;
+    --s: 15.5vw;
+    --g: 5vw;
+  
+    display: grid;
+    gap: var(--g);
+    width: calc(2 * var(--s) + var(--g));
+    grid-auto-flow: column;
+  }
+  
+  .gallery > img {
+    width: var(--s);
+    height: var(--s);
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.5s, filter 0.5s;
+  }
+  
+  .gallery > img:hover {
+    transform: scale(1.5);
+  }
+  
+  /* Dodaj pełną responsywność */
+  @media screen and (max-width: 768px) {
+    .center-image {
+      width: 100%;
+      max-height: 60vw;
+      margin: 10% auto;
+    }
+  
+    .gallery {
+      --s: 20vw;
+      --g: 5vw;
+      width: calc(2 * var(--s) + var(--g));
+    }
+  
+    .app {
+      padding: 10px;
+    }
+  }
+  
