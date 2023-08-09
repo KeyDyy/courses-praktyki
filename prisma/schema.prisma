@@ -1,0 +1,159 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Tables
+model Answer {
+  answer_id   Int      @id @default(autoincrement())
+  question_id Int
+  answer      String
+  correct     Boolean
+  Question    Question @relation(fields: [question_id], references: [question_id])
+}
+
+model Certificate {
+  certificate_id Int      @id @default(autoincrement())
+  user_id        Int
+  course_id      Int
+  date           DateTime
+  answer         String
+  correct        Boolean
+  User           User     @relation(fields: [user_id], references: [user_id])
+  Course         Course   @relation(fields: [course_id], references: [course_id])
+}
+
+model Comment {
+  comment_id  Int      @id @default(autoincrement())
+  text        String
+  date_posted DateTime @default(now())
+  user_id     Int
+  post_id     Int
+  User        User     @relation(fields: [user_id], references: [user_id])
+  Post        Post     @relation(fields: [post_id], references: [post_id])
+
+  replyToId Int?
+  replyTo   Comment?  @relation("ReplyTo", fields: [replyToId], references: [comment_id], onDelete: NoAction, onUpdate: NoAction)
+  replies   Comment[] @relation("ReplyTo")
+
+  Vote      Vote[]
+  commentId Int?
+}
+
+model Course {
+  course_id   Int           @id @default(autoincrement())
+  name        String
+  description String
+  language    String
+  Certificate Certificate[]
+  ForumTopic  ForumTopic[]
+  Module      Module[]
+}
+
+model ForumTopic {
+  forumtopic_id Int    @id @default(autoincrement())
+  name          String
+  course_id     Int
+  language      String
+  Course        Course @relation(fields: [course_id], references: [course_id])
+  Post          Post[]
+}
+
+model Material {
+  material_id Int     @id @default(autoincrement())
+  module_id   Int
+  name        String
+  content     Json?
+  description String?
+  Module      Module  @relation(fields: [module_id], references: [module_id])
+}
+
+model Module {
+  module_id Int        @id @default(autoincrement())
+  course_id Int
+  name      String
+  Course    Course     @relation(fields: [course_id], references: [course_id])
+  Material  Material[]
+  Quiz      Quiz[]
+}
+
+model Post {
+  post_id       Int        @id @default(autoincrement())
+  forumtopic_id Int
+  user_id       Int
+  title         String
+  text          String?
+  content       Json?
+  date_created  DateTime   @default(now())
+  ForumTopic    ForumTopic @relation(fields: [forumtopic_id], references: [forumtopic_id])
+  User          User       @relation(fields: [user_id], references: [user_id])
+  Comment       Comment[]
+  Vote          Vote[]
+}
+
+model Question {
+  question_id Int      @id @default(autoincrement())
+  quiz_id     Int
+  text        String
+  content     Json?
+  Answer      Answer[]
+  Quiz        Quiz     @relation(fields: [quiz_id], references: [quiz_id])
+}
+
+model Quiz {
+  quiz_id    Int          @id @default(autoincrement())
+  module_id  Int
+  title      String
+  Module     Module       @relation(fields: [module_id], references: [module_id])
+  Question   Question[]
+  QuizResult QuizResult[]
+}
+
+model QuizResult {
+  quizresult_id Int      @id @default(autoincrement())
+  user_id       Int
+  quiz_id       Int
+  date_attempt  DateTime @default(now())
+  points        Int
+  User          User     @relation(fields: [user_id], references: [user_id])
+  Quiz          Quiz     @relation(fields: [quiz_id], references: [quiz_id])
+}
+
+model User {
+  user_id       Int           @id @default(autoincrement())
+  password      String
+  username      String        @unique
+  first_name    String
+  last_name     String
+  email         String        @unique
+  permissions   String        @default("none")
+  disability    String        @default("none")
+  course_id     Int?
+  quizresult_id Int?
+  Certificate   Certificate[]
+  Comment       Comment[]
+  Post          Post[]
+  QuizResult    QuizResult[]
+  Vote          Vote[]
+}
+
+model Vote {
+  vote_id    Int      @id @default(autoincrement())
+  like       Boolean  @default(false)
+  dislike    Boolean  @default(false)
+  post_id    Int?
+  comment_id Int?
+  user_id    Int
+  Post       Post?    @relation(fields: [post_id], references: [post_id])
+  Comment    Comment? @relation(fields: [comment_id], references: [comment_id])
+  User       User     @relation(fields: [user_id], references: [user_id])
+}
