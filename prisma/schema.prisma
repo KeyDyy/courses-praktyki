@@ -76,7 +76,7 @@ model Course {
   course_id   Int           @id @default(autoincrement())
   name        String
   description String
-  language    String
+  language    Language
   Certificate Certificate[]
   ForumTopic  ForumTopic[]
   Module      Module[]
@@ -127,7 +127,7 @@ model Question {
   question_id Int      @id @default(autoincrement())
   quiz_id     Int
   text        String
-  content     Json?
+  content     String?
   Answer      Answer[]
   Quiz        Quiz     @relation(fields: [quiz_id], references: [quiz_id])
 }
