@@ -12,6 +12,29 @@ generator client {
   provider = "prisma-client-js"
 }
 
+enum Role {
+  USER
+  STUDENT
+  OPERATOR
+  ADMIN
+}
+
+enum VoteType {
+  Up
+  DOWN
+}
+
+enum Disability {
+  debil
+  zjeb
+  glupek
+}
+
+enum Language {
+  Polski
+  Espanol
+}
+
 // Tables
 model Answer {
   answer_id   Int      @id @default(autoincrement())
@@ -53,7 +76,7 @@ model Course {
   course_id   Int           @id @default(autoincrement())
   name        String
   description String
-  language    String
+  language    Language
   Certificate Certificate[]
   ForumTopic  ForumTopic[]
   Module      Module[]
@@ -104,7 +127,7 @@ model Question {
   question_id Int      @id @default(autoincrement())
   quiz_id     Int
   text        String
-  content     Json?
+  content     String?
   Answer      Answer[]
   Quiz        Quiz     @relation(fields: [quiz_id], references: [quiz_id])
 }
@@ -135,8 +158,8 @@ model User {
   first_name    String
   last_name     String
   email         String        @unique
-  permissions   String        @default("none")
-  disability    String        @default("none")
+  permissions   Role          @default(USER)
+  disability    Disability    @default(debil)
   course_id     Int?
   quizresult_id Int?
   Certificate   Certificate[]
@@ -148,8 +171,7 @@ model User {
 
 model Vote {
   vote_id    Int      @id @default(autoincrement())
-  like       Boolean  @default(false)
-  dislike    Boolean  @default(false)
+  type       VoteType
   post_id    Int?
   comment_id Int?
   user_id    Int
