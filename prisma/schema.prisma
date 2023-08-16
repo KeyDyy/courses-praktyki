@@ -20,19 +20,76 @@ enum Role {
 }
 
 enum VoteType {
-  Up
+  UP
   DOWN
 }
 
-enum Disability {
-  debil
-  zjeb
-  glupek
+enum lessFortunate {
+  disability
+  health_problems
+  educational_problems
+  culture_differences
+  economic_barriers
+  social_barriers
+  geographical_barriers
 }
 
 enum Language {
   Polski
   Espanol
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [user_id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [user_id], onDelete: Cascade)
+}
+
+model User {
+  user_id    String  @id @default(cuid())
+  username   String? @unique
+  first_name String
+  last_name  String
+
+  email         String?   @unique
+  emailVerified DateTime?
+
+  permissions   Role           @default(USER)
+  lessFortunate lessFortunate?
+
+  course_id     Int?
+  quizresult_id Int?
+
+  image    String?
+  accounts Account[]
+  sessions Session[]
+
+  Certificate Certificate[]
+  Comment     Comment[]
+  Post        Post[]
+  QuizResult  QuizResult[]
+  votes       Vote[]
 }
 
 // Tables
@@ -45,8 +102,8 @@ model Answer {
 }
 
 model Certificate {
-  certificate_id Int      @id @default(autoincrement())
-  user_id        Int
+  certificate_id String   @id @default(cuid())
+  user_id        String
   course_id      Int
   date           DateTime
   answer         String
@@ -59,7 +116,7 @@ model Comment {
   comment_id  Int      @id @default(autoincrement())
   text        String
   date_posted DateTime @default(now())
-  user_id     Int
+  user_id     String
   post_id     Int
   User        User     @relation(fields: [user_id], references: [user_id])
   Post        Post     @relation(fields: [post_id], references: [post_id])
@@ -83,11 +140,11 @@ model Course {
 }
 
 model ForumTopic {
-  forumtopic_id Int    @id @default(autoincrement())
+  forumtopic_id Int      @id @default(autoincrement())
   name          String
   course_id     Int
-  language      String
-  Course        Course @relation(fields: [course_id], references: [course_id])
+  language      Language
+  Course        Course   @relation(fields: [course_id], references: [course_id])
   Post          Post[]
 }
 
@@ -112,7 +169,7 @@ model Module {
 model Post {
   post_id       Int        @id @default(autoincrement())
   forumtopic_id Int
-  user_id       Int
+  user_id       String
   title         String
   text          String?
   content       Json?
@@ -143,7 +200,7 @@ model Quiz {
 
 model QuizResult {
   quizresult_id Int      @id @default(autoincrement())
-  user_id       Int
+  user_id       String
   quiz_id       Int
   date_attempt  DateTime @default(now())
   points        Int
@@ -151,30 +208,12 @@ model QuizResult {
   Quiz          Quiz     @relation(fields: [quiz_id], references: [quiz_id])
 }
 
-model User {
-  user_id       Int           @id @default(autoincrement())
-  password      String
-  username      String        @unique
-  first_name    String
-  last_name     String
-  email         String        @unique
-  permissions   Role          @default(USER)
-  disability    Disability    @default(debil)
-  course_id     Int?
-  quizresult_id Int?
-  Certificate   Certificate[]
-  Comment       Comment[]
-  Post          Post[]
-  QuizResult    QuizResult[]
-  Vote          Vote[]
-}
-
 model Vote {
   vote_id    Int      @id @default(autoincrement())
   type       VoteType
   post_id    Int?
   comment_id Int?
-  user_id    Int
+  user_id    String
   Post       Post?    @relation(fields: [post_id], references: [post_id])
   Comment    Comment? @relation(fields: [comment_id], references: [comment_id])
   User       User     @relation(fields: [user_id], references: [user_id])
