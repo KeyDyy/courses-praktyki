@@ -1,10 +1,12 @@
+import React from 'react';
 import Link from 'next/link';
+import QuestionPage from './[quizId]//QuestionPage'; // Import the QuestionPage component
 
 const QuizListPage = () => {
     const quizzes = [
         { id: 1, title: 'Quiz 1' },
         { id: 2, title: 'Quiz 2' },
-        // Dodaj inne quizy tutaj
+        // Add other quizzes here
     ];
 
     return (
@@ -14,8 +16,10 @@ const QuizListPage = () => {
                 {quizzes.map((quiz) => (
                     <li key={quiz.id}>
                         <Link href={`/quiz/${quiz.id}`} passHref>
-                            <h5>Start {quiz.title}</h5>
+                            <p>Start {quiz.title}</p>
                         </Link>
+                        {/* Pass the quizId as a prop to QuestionPage */}
+
                     </li>
                 ))}
             </ul>

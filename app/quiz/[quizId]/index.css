@@ -40,7 +40,7 @@
 }
 
 .answer-item.selected {
-  background-color: yellow;
+  background-color: grey;
 }
 
 .score {
