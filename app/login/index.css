@@ -1,10 +1,4 @@
-/* App.module.css */
-.app {
-    text-align: center;
-    padding: 1%;
-  }
-  
-  .inputs {
+    .inputs {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -19,22 +13,7 @@
     width: 100%;
   }
   
-  .pickers, .register {
-    margin-top: 1%;
-  }
+
   
-  button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #3498db;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    margin: 10px;
-  }
-  
-  button:hover {
-    background-color: #2980b9;
-  }
+
   

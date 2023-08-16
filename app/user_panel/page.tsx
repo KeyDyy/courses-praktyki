@@ -1,16 +1,16 @@
 import React from 'react';
-import './index.css';
+import './index_user_panel.css';
 import Link from 'next/link';
 
 const App = () => {
   return (
     <div className="app">
-      <div className="gallery">
-        <Link href="./user_panel/course" className="link">
-          <img src="./polska.jpg" alt="Kursy" className='center-image'/>
+      <div className="gallery-user_panel">
+        <Link href="./user_panel/course">
+          <img src="./polska.jpg" alt="Kursy" className='center-image-user_panel'/>
         </Link>
-        <Link href = "./user_panel/forum" className="link">
-          <img src="./hiszpania.jpg" alt="Forum" className='center-image'/>
+        <Link href = "./user_panel/forum">
+          <img src="./hiszpania.jpg" alt="Forum" className='center-image-user_panel'/>
         </Link>
       </div>
     </div>

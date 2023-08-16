@@ -1,12 +1,12 @@
 import React from "react";
-import "./index.css";
+import "./index_src.css";
 import Link from "next/link";
 
 const src = () => {
   return (
     <div className="app">
       <p> Numer projektu Tytuł projekty </p>
-      <div className="left-buttons">
+      <div className="left-buttons-src">
         <a href="./ProjectDescription.pdf" download>
           <button> Project description </button>
         </a>
@@ -17,7 +17,7 @@ const src = () => {
           <button> Course description </button>
         </a>
       </div>
-      <div className="right-buttons">
+      <div className="right-buttons-src">
         <Link href = "./register" >
           <button> Register </button>
         </Link>

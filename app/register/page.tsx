@@ -16,12 +16,14 @@ const App = () => {
       </div>
       <div className="register"> 
         <Link href = "./user_panel">
-        <button> Register </button>
+          <button> Register </button>
         </Link>
       </div>
-      <Link href = "./login">
-        <button> Login to the platform </button>
-      </Link>
+      <div className="register">
+        <Link href = "./login">
+          <button> Login to the platform </button>
+        </Link>
+      </div>
     </div>
     
   );

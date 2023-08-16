@@ -1,4 +1,4 @@
-.center-image {
+.center-image-app {
     width: 90% auto;
     max-height: 25vw;
     /* Zmniejsza wysokość obrazka */
@@ -7,24 +7,6 @@
     border-radius: 8px;
     padding: 2px;
 }
-
-.bottom-image {
-    width: 10%;
-    display: block;
-    margin: 2% auto;
-    border-radius: 8px;
-    padding: 1px;
-    margin-top: auto;
-  }
-  
-  .gallery>img {
-    width: 0;
-    min-width: calc(100% + var(--z) / 2);
-    height: var(--s);
-    object-fit: cover;
-    cursor: pointer;
-    transition: 0.5s;
-  }
 
 .link img {
     width: 0;
@@ -37,4 +19,19 @@
     
   .link:hover img{
     width: calc(var(--s)/2.5);
+  }
+
+  .gallery-app {
+    --z: 1px;
+    --s: 35vw;
+    --g: 1vw;
+  
+    display: grid;
+    gap: var(--g);
+    width: calc(2 * var(--s) + var(--g));
+    grid-auto-flow: column;
+  }
+
+  p {
+    margin-top: 5%;
   }

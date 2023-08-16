@@ -1,9 +1,4 @@
-/* App.module.css */
-.app {
-  padding: 20px;
-}
-
-.gallery {
+.gallery-user_panel {
   --z: 1px;
   --s: 20.5vw;
   --g: 5vw;
@@ -14,7 +9,7 @@
   grid-auto-flow: column;
 }
 
-.gallery img {
+.gallery-user_panel img {
   width: var(--s);
   height: var(--s);
   object-fit: cover;
@@ -22,19 +17,19 @@
   transition: transform 0.5s, filter 0.5s;
 }
 
-.gallery img:hover {
+.gallery-user_panel img:hover {
   transform: scale(1.2);
 }
 
 /* Dodaj pełną responsywność */
 @media screen and (max-width: 768px) {
-  .center-image {
+  .center-image-user_panel {
     width: 100%;
     max-height: 60vw;
     margin: 10% auto;
   }
 
-  .gallery {
+  .gallery-user_panel {
     --s: 35vw;
     --g: 5%;
     width: calc(2 * var(--s) + var(--g));
