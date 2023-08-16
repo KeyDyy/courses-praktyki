@@ -28,15 +28,10 @@
   /* Zabezpiecza przed białym tłem po przewinięciu */
 }
 
-.gallery > img {
-  width: 0;
-  min-width: calc(100% + var(--z) / 2);
-  height: var(--s);
-  object-fit: cover;
-  cursor: pointer;
-  transition: 0.5s;
+p {
+  margin-top: 5%;
 }
-  
+
 .gallery {
   --z: 1px;
   --s: 35vw;

@@ -17,6 +17,14 @@
     margin-top: auto;
   }
   
+  .gallery>img {
+    width: 0;
+    min-width: calc(100% + var(--z) / 2);
+    height: var(--s);
+    object-fit: cover;
+    cursor: pointer;
+    transition: 0.5s;
+  }
 
 .link img {
     width: 0;
