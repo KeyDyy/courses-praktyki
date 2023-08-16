@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.css';
+import Link from 'next/link';
 
 const App = () => {
   return (
@@ -14,9 +15,13 @@ const App = () => {
         <input type="text" placeholder="Enter your password again"  id = "password2"/>
       </div>
       <div className="register"> 
+        <Link href = "./user_panel">
         <button> Register </button>
+        </Link>
       </div>
-      <button> Login to the platform </button>
+      <Link href = "./login">
+        <button> Login to the platform </button>
+      </Link>
     </div>
     
   );

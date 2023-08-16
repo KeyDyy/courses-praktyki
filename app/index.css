@@ -1,26 +1,32 @@
 .center-image {
-    width: 100% auto;
-    max-height: 25vw; /* Zmniejsza wysokość obrazka */
+    width: 90% auto;
+    max-height: 25vw;
+    /* Zmniejsza wysokość obrazka */
     display: block;
     margin-top: 3vw;
     border-radius: 8px;
     padding: 2px;
-  }
-  
+}
 
-  .bottom-image {
+.bottom-image {
     width: 10%;
-    max-height: 15vw;
-    margin: 1% auto;
-  }
-
-  
-  .gallery > img:hover {
-    width: calc(var(--s)/2);
+    display: block;
+    margin: 2% auto;
+    border-radius: 8px;
+    padding: 1px;
+    margin-top: auto;
   }
   
 
-  
-  p {
-    margin-top: 2%;
+.link img {
+    width: 0;
+    min-width: calc(100% + var(--z) / 2);
+    height: var(--s);
+    object-fit: cover;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+    
+  .link:hover img{
+    width: calc(var(--s)/2.5);
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.css';
+import { NavLink } from 'react-router-dom';
 
 const App = () => {
   const modules = [
@@ -21,7 +22,9 @@ const App = () => {
             <tr key={module.id}>
               <td>{module.title}</td>
               <td>
-                <button>Get Learning Materials</button>
+                <a href = {`../LearningMaterialsModule${module.id}.pdf`} download> 
+                  <button>Get Learning Materials</button>
+                </a>
               </td>
               <td>
                 <button>Test of Knowledge</button>
@@ -36,7 +39,9 @@ const App = () => {
       <div className="progress-bar">
         <div className="progress" style={{ width: `${averageProgress}%` }}></div>
       </div>
-      <button className="certificate-button">Get certificate in pdf</button>
+      <a href="CertificateWersjaWstępna" download> 
+        <button className="certificate-button">Get certificate in pdf</button>
+      </a>
     </div>
   );
 };
