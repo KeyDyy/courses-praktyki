@@ -1,14 +1,25 @@
 // createUser.ts
+import { Language } from '@prisma/client';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 const supabaseUrl: string = process.env.SUPABASE_URL!;
 const supabaseKey: string = process.env.SUPABASE_KEY!;
 const supabase: SupabaseClient = createClient(supabaseUrl, supabaseKey);
+export interface User {
+    user_id: string;
+    first_name: string | null;
+    last_name: string | null;
+    email: string | null;
+    picture: string | null;
+    lanuage: Language | null;
+    // Dodaj pozostałe pola modelu User
+}
 
-export async function checkUserExistence(userId: string): Promise<boolean> {
+
+export async function checkUserExistence(userId: string): Promise<User | null> {
     console.error('Checking user existence...');
     try {
-        const { data: existingUser, error } = await supabase
+        const { data, error } = await supabase
             .from('User')
             .select('*')
             .eq('user_id', userId);
@@ -18,13 +29,16 @@ export async function checkUserExistence(userId: string): Promise<boolean> {
             throw error;
         }
 
-        return existingUser && existingUser.length > 0;
+        if (data && data.length > 0) {
+            return data[0] as User;
+        } else {
+            return null;
+        }
     } catch (error) {
         console.error('Error checking user existence:', error);
-        return false;
+        return null;
     }
 }
-
 export async function createUser(id: string, firstName: string, lastName: string | null): Promise<boolean> {
     console.error('Creating user ...');
     try {

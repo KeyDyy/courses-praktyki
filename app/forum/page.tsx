@@ -1,25 +1,63 @@
 'use client'
-import { FC } from 'react';
+import React from "react";
+import type { GetStaticProps } from "next";
+import Layout from "@/components/layout";
+import PostComponent, { PostProps } from "@/components/Post";
+import supabase from "@/utils/supabaseClient"; // Update the import path
 import { useUser } from '@/app/context/user';
-import Layout from '@/components/layout'; // Załóżmy, że masz komponent Layout
 
-const Forum: FC = () => {
-    const { user } = useUser();
+export const getStaticProps: GetStaticProps = async () => {
+    const { data: feed, error } = await supabase
+        .from('Post')
+        .select('*')
+        .order('date_created', { ascending: false });
 
-    if (!user) {
-        // Jeśli użytkownik nie jest zalogowany, przekieruj na stronę logowania
-        // W rzeczywistym projekcie warto również przekazać informację o stronie, którą chcieli wejść po zalogowaniu
-        return <p>Musisz być zalogowany, aby mieć dostęp do forum. Przekierowuję na stronę logowania...</p>;
+    if (error) {
+        console.error('Error fetching feed:', error);
+        return {
+            notFound: true,
+        };
     }
+
+    return {
+        props: { feed },
+        revalidate: 10,
+    };
+};
+
+type Props = {
+    feed: PostProps[];
+};
+
+const Forum: React.FC<Props> = (props) => {
+    const { user } = useUser();
 
     return (
         <Layout>
-            <div>
-                {/* Tutaj umieść zawartość swojego forum */}
-                <h1>Forum</h1>
-                <p>Witaj na naszym forum, {user.email}!</p>
-                {/* ... */}
+            <div className="page">
+                <h1>Public Feed</h1>
+                <main>
+                    {props.feed.map((post) => (
+                        <div key={post.post_id} className="post">
+                            <PostComponent post={post} />
+                        </div>
+                    ))}
+                </main>
             </div>
+            <style jsx>{`
+                .post {
+                    background: white;
+                    transition: box-shadow 0.1s ease-in;
+                }
+
+                .post:hover {
+                    box-shadow: 1px 1px 3px #aaa;
+                }
+
+                .post + .post {
+                    margin-top: 2rem;
+                }
+            `}</style>
         </Layout>
     );
 };

@@ -4,12 +4,15 @@ import { createContext, useState, useEffect, useContext, ReactNode } from "react
 import { useRouter } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { checkUserExistence, createUser } from "@/utils/createUser"; // Adjust the import path
+import { Language } from "@prisma/client";
 
 interface User {
   id: string | null;
+  first_name: string | null; // Upewnij się, że to pole jest dostępne w User model
+  last_name: string | null; // Upewnij się, że to pole jest dostępne w User model
   email: string | null;
-  name: string | null;
-  picture: string | null;
+  image: string | null;
+  language: Language | null;
 }
 
 interface UserContext {
@@ -42,18 +45,25 @@ const Provider = ({ children }: ProviderProps) => {
         if (id && email) {
           const [firstName, lastName] = extractNamesFromEmail(email);
 
-          const identities = theUser.identities || [];
-          setUser({
-            id,
-            email: theUser.email || null,
-            name: identities[0]?.identity_data?.first_name || null,
-            picture: identities[0]?.identity_data?.picture || null,
-          });
+          const userFromSupabase = await checkUserExistence(id);
+
+          if (userFromSupabase) {
+            setUser({
+              id,
+              email: theUser.email || null,
+              first_name: userFromSupabase.first_name || null,
+              last_name: userFromSupabase.last_name || null,
+              image: userFromSupabase.picture || null,
+              language: userFromSupabase.lanuage || null,
+            });
+          } else {
+            console.error('User not found in database');
+          }
 
           // Check if user with the given user_id exists in the database using utility function
-          const userExists = await checkUserExistence(id);
+          //const userExists = await checkUserExistence(id);
 
-          if (!userExists) {
+          if (!userFromSupabase) {
             // User doesn't exist, create it using utility function
             const createUserSuccess = await createUser(id, firstName, lastName);
             if (!createUserSuccess) {
@@ -113,6 +123,7 @@ export default Provider;
 const extractNamesFromEmail = (email: string): [string, string | null] => {
   const parts = email.split('@')[0].split('.');
   const firstName = parts[0] || email;
-  const lastName = parts[1] || null;
-  return [firstName, lastName];
+  const lastNamePart = parts.slice(1).join('.'); // Łącz część z kropkami jako nazwisko
+  const lastName = lastNamePart.replace(/[^a-zA-Z]/g, ''); // Usuń wszystko oprócz liter
+  return [firstName, lastName || null];
 };
