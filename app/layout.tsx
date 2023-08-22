@@ -1,21 +1,27 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import React, { ReactNode } from 'react';
+import './globals.css';
+import { Inter } from 'next/font/google';
+import UserProvider from './context/user';
 
-const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
+const inter = Inter({ subsets: ['latin'] });
+
+export const metadata = {
   title: 'Next Courses',
+};
+
+interface RootLayoutProps {
+  children: ReactNode;
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+        <div>
+          <UserProvider>{children}</UserProvider>
+        </div>
+      </body>
     </html>
-  )
+  );
 }

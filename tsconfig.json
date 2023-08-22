@@ -34,8 +34,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "index.js",
+    "index.ts",
     "app/quiz/page.tsx",
+    "app/layout.jsx",
+    "app/context/user.tsx"
   ],
   "exclude": [
     "node_modules"

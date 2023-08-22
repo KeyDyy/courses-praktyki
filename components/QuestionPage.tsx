@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import { fetchQuestionsByQuizId } from '../../../utils/supabaseApi';
-import './index.css'
+import { fetchQuestionsByQuizId } from '@/utils/supabaseApi';
+
 
 interface Answer {
     answer_id: number;

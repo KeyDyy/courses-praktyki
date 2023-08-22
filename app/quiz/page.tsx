@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import QuestionPage from './[quizId]//QuestionPage'; // Import the QuestionPage component
+import QuestionPage from '../../components/QuestionPage'; // Import the QuestionPage component
 
 const QuizListPage = () => {
     const quizzes = [

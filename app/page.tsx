@@ -1,3 +1,4 @@
+
 import React from "react";
 import Link from "next/link";
 import "./index.css";
@@ -32,6 +33,7 @@ const Navbar = () => {
 const App = () => {
   return (
     <div className="app">
+      <Navbar />
       <Navbar />
       {/* <p className="">Numer projektu Tytuł projektu</p> */}
       <div className="gallery-app">
