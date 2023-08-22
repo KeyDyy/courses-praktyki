@@ -30,7 +30,8 @@ button:hover {
   background-color: #2980b9;
 }
 
-.pickers, .register {
+.pickers,
+.register {
   margin-top: 1%;
 }
 
@@ -41,6 +42,55 @@ button:hover {
   border-radius: 8px;
   padding: 1px;
   margin-top: auto;
+}
+
+.navbar {
+  background-color: rgb(0, 0, 47);
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  margin-bottom: 1%;
+}
+
+.navbar-list-right {
+  margin-left: auto;
+  /* Przesuń na prawą stronę */
+  color: #007bff;
+  font-weight: bold;
+  margin-right: 2%;
+}
+
+.navbar-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  margin-left: 2%;
+}
+
+.navbar-item {
+  margin-right: 20px;
+}
+
+.navbar-item:last-child {
+  margin-right: 0;
+}
+
+.navbar-item a,
+.navbar-list-right {
+  text-decoration: none;
+  color: #ffffff;
+  /* Kolor niebieski */
+  font-weight: bold;
+}
+
+.navbar-item a:hover,
+.navbar-list-right a:hover {
+  color: #0067d4;
+  /* Kolor niebieski po najechaniu myszką */
+}
+
+.rounded-image {
+  border-radius: 8px;
 }
 
 .app {
@@ -74,4 +124,14 @@ button:hover {
   .app {
     padding: 10px;
   }
+  .navbar{
+    font-size: 60%;
+    text-align: center;
+    padding: 0%;
+    margin: 0%;
+  }
+  #welcome{
+    display: none;
+  }
+
 }

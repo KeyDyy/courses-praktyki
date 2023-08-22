@@ -70,7 +70,7 @@ model User {
   user_id       String    @id @default(cuid())
   username      String?   @unique
   first_name    String?
-  last_name     String?  password   String
+  last_name     String?
 
   email         String?   @unique
   emailVerified DateTime?
