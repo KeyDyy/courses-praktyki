@@ -1,10 +1,14 @@
+
 import React from "react";
 import Link from "next/link"; // Importuj Link z Next.js
 import "./index.css";
+import Navbar from "@/components/Navbar";
+
 
 const App = () => {
   return (
     <div className="app">
+      <Navbar />
       <p className=""> Numer projektu Tytuł projekty </p>
       <div className="gallery-app">
         <Link href="./src" className="link">
