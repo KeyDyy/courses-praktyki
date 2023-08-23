@@ -1,5 +1,5 @@
 // createUser.ts
-import { Language } from '@prisma/client';
+import { Language, lessFortunate } from '@prisma/client';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 const supabaseUrl: string = process.env.SUPABASE_URL!;
@@ -12,6 +12,7 @@ export interface User {
     email: string | null;
     picture: string | null;
     language: Language | null;
+    lessFortunate: lessFortunate | null;
     // Dodaj pozostałe pola modelu User
 }
 

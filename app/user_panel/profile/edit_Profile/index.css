@@ -24,11 +24,24 @@
     margin-top: 5%;
 }
 
+.custom-select {
+    border: 1px solid rgb(0, 0, 47);
+    padding:1%;
+}
+
+.custom-select select {
+    background-color: white; /* Ustawia białe tło */
+  }
+  
+  .custom-select option[value="null"] {
+    background-color: white; /* Domyślnie wybrane tło dla opcji "brak" */
+  }
+
 .content {
     background-color: #ffffff;
     border: 3px solid rgb(0, 0, 47);
     width: 25%;
-    height: 50vh;
+    height: 60vh;
     margin: 0 auto;
     padding: 20px;
     border-radius: 10px;
@@ -46,3 +59,7 @@
     transition: background-color 0.3s ease;
     margin-top: 15%;
 }
+
+p {
+    margin-bottom: 1%;
+  }

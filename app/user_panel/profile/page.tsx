@@ -1,9 +1,8 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useUser } from "@/app/context/user";
 import Navbar from "@/components/Navbar";
 import "./index.css";
-import { userInfo } from "os";
 
 const ProfilePage = () => {
   const { user } = useUser();
@@ -37,22 +36,22 @@ const ProfilePage = () => {
                 </div>
               </div>
               <div className="left-section-l">
-                <div className="photo">
-                  {user.image}
-                </div>
+                <div className="photo">{user.image}</div>
               </div>
             </div>
             <div className="left-section-bottom">
               <hr />
               <div className="userChangeParameters">
                 <button>
-                  <a href="/user_panel/profile/edit_Profile">Edytuj swoje dane</a>
+                  <a href="/user_panel/profile/edit_Profile">
+                    Edytuj swoje dane
+                  </a>
                 </button>
               </div>
             </div>
           </div>
           <div className="right-section">
-            <div className="userAchievements">
+          <div className="userAchievements">
               <h1>Statystyki</h1>
             </div>
           </div>

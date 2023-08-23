@@ -1,5 +1,5 @@
 // createUser.ts
-import { Language } from '@prisma/client';
+import { Language, lessFortunate } from '@prisma/client';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 const supabaseUrl: string = process.env.SUPABASE_URL!;
@@ -12,10 +12,11 @@ export interface User {
     email: string | null;
     picture: string | null;
     language: Language | null;
+    lessFortunate: lessFortunate | null;
     // Dodaj pozostałe pola modelu User
 }
 
-export async function editUser(id: string, firstName: string, lastName: string, language: Language | null): Promise<boolean> {
+export async function editUser(id: string, firstName: string, lastName: string, lessFortunate: lessFortunate | null, language: Language | null): Promise<boolean> {
     try {
       const { error } = await supabase
         .from('User')
@@ -23,6 +24,7 @@ export async function editUser(id: string, firstName: string, lastName: string, 
           first_name: firstName,
           last_name: lastName,
           language: language,
+          lessFortunate:lessFortunate,
         })
         .eq('user_id', id);
   

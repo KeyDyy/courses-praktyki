@@ -4,7 +4,8 @@ import { createContext, useState, useEffect, useContext, ReactNode } from "react
 import { useRouter } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { checkUserExistence, createUser } from "@/utils/createUser"; // Adjust the import path
-import { Language } from "@prisma/client";
+import { Language, lessFortunate } from "@prisma/client";
+
 
 interface User {
   id: string | null;
@@ -13,6 +14,7 @@ interface User {
   email: string | null;
   image: string | null;
   language: Language | null;
+  lessFortunate: lessFortunate | null;
 }
 
 interface UserContext {
@@ -55,6 +57,7 @@ const Provider = ({ children }: ProviderProps) => {
               last_name: userFromSupabase.last_name || null,
               image: userFromSupabase.picture || null,
               language: userFromSupabase.language || null,
+              lessFortunate: userFromSupabase.lessFortunate || null,
             });
           } else {
             console.error('User not found in database');
