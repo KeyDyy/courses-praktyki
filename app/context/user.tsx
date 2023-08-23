@@ -54,7 +54,7 @@ const Provider = ({ children }: ProviderProps) => {
               first_name: userFromSupabase.first_name || null,
               last_name: userFromSupabase.last_name || null,
               image: userFromSupabase.picture || null,
-              language: userFromSupabase.lanuage || null,
+              language: userFromSupabase.language || null,
             });
           } else {
             console.error('User not found in database');

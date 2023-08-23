@@ -71,6 +71,7 @@ model User {
   username      String?   @unique
   first_name    String?
   last_name     String?
+  language      Language?
 
   email         String?   @unique
   emailVerified DateTime?

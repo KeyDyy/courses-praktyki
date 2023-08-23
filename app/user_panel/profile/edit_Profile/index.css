@@ -1,0 +1,48 @@
+.edit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.edit label input {
+    margin-top: 5px;
+    background-color: #ffffff;
+    border: 1px solid rgb(0, 0, 47);
+}
+
+.edit h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10%;
+    margin-top: 5%;
+}
+
+.content {
+    background-color: #ffffff;
+    border: 3px solid rgb(0, 0, 47);
+    width: 25%;
+    height: 50vh;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 47);
+    text-align: center;
+}
+
+.submitButton {
+    padding: 10px 20px;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 15%;
+}

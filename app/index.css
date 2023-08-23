@@ -26,7 +26,7 @@
     --z: 1px;
     --s: 35vw;
     --g: 1vw;
-    margin-top: auto; /* Dodaj margines na górze */
+    margin-top: 4%; /* Dodaj margines na górze */
     margin-bottom: auto; /* Dodaj margines na dole */
   
     display: grid;

@@ -11,7 +11,7 @@ export interface User {
     last_name: string | null;
     email: string | null;
     picture: string | null;
-    lanuage: Language | null;
+    language: Language | null;
     // Dodaj pozostałe pola modelu User
 }
 

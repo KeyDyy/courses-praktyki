@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import "./index_course.css";
 import { PrismaClient } from "@prisma/client"; // Import PrismaClient
+import Navbar from "@/components/Navbar";
 
 const App = () => {
   const modules = [
@@ -24,6 +25,7 @@ const App = () => {
 
   return (
     <div className="app">
+      <Navbar />
       <table className="module-table">
         <tbody>
           {modules.map((module) => (

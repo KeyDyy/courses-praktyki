@@ -25,6 +25,15 @@ const Navbar = () => {
             Course description
           </a>
         </li>
+        {user ? (
+          <>
+            <li className="navbar-item">
+              <a href = {"/user_panel/profile"}> Profil </a>
+            </li>
+          </>
+        ) : (
+          <li></li>
+        )}
 
         {user ? (
           <>
