@@ -40,7 +40,7 @@ export async function checkUserExistence(userId: string): Promise<User | null> {
         return null;
     }
 }
-export async function createUser(id: string, firstName: string, lastName: string | null): Promise<boolean> {
+export async function createUser(id: string, firstName: string, lastName: string | null, email: string,): Promise<boolean> {
     console.error('Creating user ...');
     try {
         const { data: newUser, error } = await supabase
@@ -50,6 +50,7 @@ export async function createUser(id: string, firstName: string, lastName: string
                     user_id: id,
                     first_name: firstName,
                     last_name: lastName || '',
+                    email: email,
                 },
             ]);
 

@@ -15,7 +15,7 @@ const App = () => {
           <img src="./polska.jpg" alt="Flag 1" className="center-image-app" />
         </Link>
         <Link href={user ? "./user_panel" : "/auth"} className="link">
-          <img src="./hiszpania.jpg" alt="Flag 2" className="center-image-app"/>
+          <img src="./hiszpania.jpg" alt="Flag 2" className="center-image-app" />
         </Link>
       </div>
       <img src="./unia.jpg" alt="Flag 3" className="bottom-image" />
