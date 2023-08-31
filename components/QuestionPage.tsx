@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { fetchQuestionsByQuizId } from "@/utils/supabaseApi";
 import { insertUserStats } from "@/utils/saveScoreToServer";
 import { useUser } from "@/app/context/user";
-
+import Link from "next/link";
 interface Answer {
   answer_id: number;
   answer: string;
@@ -76,7 +76,12 @@ const QuestionPage: React.FC<QuestionPageProps> = ({ quizId }) => {
   const handleInsertScore = () => {
     if (user && user.id) {
       insertUserStats(user.id, quizId, score);
-      return <p>Well done!</p>;
+      return <div>
+        <p>Well done!</p>
+        <Link href="/user_panel/course">
+          <p>return to course page</p>
+        </Link>
+      </div>
     }
     return null;
   };
@@ -100,6 +105,7 @@ const QuestionPage: React.FC<QuestionPageProps> = ({ quizId }) => {
             {questions ? ((score / questions.length) * 100).toFixed(2) : "0.00"}
             %
           </p>
+
           {handleInsertScore()}
         </div>
       ) : (
@@ -109,7 +115,7 @@ const QuestionPage: React.FC<QuestionPageProps> = ({ quizId }) => {
           {currentQuestion.content && (
             <div className="question-image">
               {currentQuestion.content.endsWith(".jpg") ||
-              currentQuestion.content.endsWith(".png") ? (
+                currentQuestion.content.endsWith(".png") ? (
                 <img
                   src={currentQuestion.content}
                   alt="Question"
@@ -133,13 +139,12 @@ const QuestionPage: React.FC<QuestionPageProps> = ({ quizId }) => {
               <li
                 key={answer.answer_id}
                 onClick={() => handleSelectAnswer(index, answer.correct)}
-                className={`answer-item ${
-                  selectedAnswerIndex === index
-                    ? answer.correct
-                      ? "selected correct"
-                      : "selected incorrect"
-                    : ""
-                }`}
+                className={`answer-item ${selectedAnswerIndex === index
+                  ? answer.correct
+                    ? "selected correct"
+                    : "selected incorrect"
+                  : ""
+                  }`}
               >
                 <strong>{String.fromCharCode(65 + index)}</strong> -{" "}
                 {answer.answer}

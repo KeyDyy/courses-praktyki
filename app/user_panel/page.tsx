@@ -9,10 +9,10 @@ const App = () => {
       <Navbar />
       <div className="gallery-user_panel">
         <Link href="./user_panel/course">
-          <img src="./kursy.png" alt="Kursy" className='center-image-user_panel'/>
+          <img src="./kursy.png" alt="Kursy" className='center-image-user_panel' />
         </Link>
-        <Link href = "./user_panel/forum">
-          <img src="./hiszpania.jpg" alt="Forum" className='center-image-user_panel'/>
+        <Link href="./forum">
+          <img src="./hiszpania.jpg" alt="Forum" className='center-image-user_panel' />
         </Link>
       </div>
       <img src="./unia.jpg" alt="Flag 3" className="bottom-image" />
