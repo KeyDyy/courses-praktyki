@@ -35,8 +35,8 @@ interface Post {
     title: string;
     text: string;
     content?: JSON;
-    user_id: string; // User ID
-    date_created: string; // Date
+    user_id: string;
+    date_created: string;
     comments?: Comment[];
     votes?: Vote[];
 }
@@ -75,7 +75,6 @@ export default function PostDetail() {
                 const commentUserIds = Array.from(new Set(data.map(comment => comment.user_id)));
                 fetchCommentUsers(commentUserIds);
             } else if (error) {
-                // Handle error, e.g., console.error('Error fetching comments:', error);
             }
         } catch (error) {
             console.error('An error occurred while fetching comments:', error);
@@ -129,8 +128,6 @@ export default function PostDetail() {
                         fetchPostUser(postData.data.user_id);
 
                     }
-
-                    // Ustawienie dodatkowej zawartości
 
 
                     if (commentsData.data) {

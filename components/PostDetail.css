@@ -7,7 +7,7 @@
     border: none;
     background-color: transparent;
     color: #333;
-    /* Kolor tekstu */
+
 }
 
 .vote-button.active {
@@ -26,13 +26,13 @@
 
 .btn-success {
     background-color: #28a745;
-    /* Zielony kolor tła przycisku Like */
+
     border-color: #28a745;
 }
 
 .btn-danger {
     background-color: #dc3545;
-    /* Czerwony kolor tła przycisku Dislike */
+
     border-color: #dc3545;
 }
 

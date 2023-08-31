@@ -12,7 +12,7 @@ const App = () => {
           <img src="./kursy.png" alt="Kursy" className='center-image-user_panel' />
         </Link>
         <Link href="./forum">
-          <img src="./hiszpania.jpg" alt="Forum" className='center-image-user_panel' />
+          <img src="./forum.jpg" alt="Forum" className='center-image-user_panel' />
         </Link>
       </div>
       <img src="./unia.jpg" alt="Flag 3" className="bottom-image" />

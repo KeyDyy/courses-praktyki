@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { useUser } from "@/app/context/user";
 
 const Navbar = () => {
@@ -28,7 +27,7 @@ const Navbar = () => {
         {user ? (
           <>
             <li className="navbar-item">
-              <a href = {"/user_panel/profile"}> Profil </a>
+              <a href={"/user_panel/profile"}> Profil </a>
             </li>
           </>
         ) : (

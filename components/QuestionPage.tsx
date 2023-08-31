@@ -13,7 +13,7 @@ interface Answer {
 interface Question {
   question_id: number;
   text: string;
-  content: string; // Zmieniam typ pola 'content' na 'string'
+  content: string;
   Answer: Answer[];
 }
 
@@ -36,7 +36,7 @@ const QuestionPage: React.FC<QuestionPageProps> = ({ quizId }) => {
 
   useEffect(() => {
     async function fetchQuestionsData() {
-      const fetchedQuestions = await fetchQuestionsByQuizId(quizId); // Fetch questions by quizId
+      const fetchedQuestions = await fetchQuestionsByQuizId(quizId);
       setQuestions(fetchedQuestions);
     }
 

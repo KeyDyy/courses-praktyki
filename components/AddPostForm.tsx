@@ -2,8 +2,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { supabase } from '@/utils/supabase';
 import { useUser } from '@/app/context/user';
-import styles from './AddPostForm.module.css'; // Import the CSS file
-import { toast } from 'react-toastify'; // Import toast
+import styles from './AddPostForm.module.css';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 interface AddPostFormProps {
@@ -21,8 +21,8 @@ export function AddPostForm({ onPostAdded }: AddPostFormProps) {
                 title: data.title,
                 text: data.text,
                 forumtopic_id: 1,
-                content: data.content || null, // Optional JSON content
-                date_created: new Date().toISOString(), // Current date and time
+                content: data.content || null,
+                date_created: new Date().toISOString(),
             };
 
             const { error } = await supabase.from('Post').upsert([newPost]);
@@ -31,7 +31,7 @@ export function AddPostForm({ onPostAdded }: AddPostFormProps) {
                 onPostAdded();
                 toast.success('Post added successfully', {
                     position: toast.POSITION.TOP_RIGHT,
-                    autoClose: 3000, // Auto-close the toast after 3 seconds
+                    autoClose: 3000,
                 });
             } else {
                 toast.error('Failed to add post', {

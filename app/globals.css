@@ -56,7 +56,6 @@ button:hover {
 
 .navbar-list-right {
   margin-left: auto;
-  /* Przesuń na prawą stronę */
   color: #007bff;
   font-weight: bold;
   margin-right: 2%;
@@ -81,14 +80,12 @@ button:hover {
 .navbar-list-right {
   text-decoration: none;
   color: #ffffff;
-  /* Kolor niebieski */
   font-weight: bold;
 }
 
 .navbar-item a:hover,
 .navbar-list-right a:hover {
   color: #0067d4;
-  /* Kolor niebieski po najechaniu myszką */
 }
 
 .rounded-image {
@@ -107,7 +104,7 @@ button:hover {
   /* Zabezpiecza przed białym tłem po przewinięciu */
 }
 
-/* Dodaj pełną responsywność */
+
 @media screen and (max-width: 768px) {
   .center-image {
     width: 100%;

@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import QuestionPage from '@/components/QuestionPage'; // Path to your QuestionPage component
+import QuestionPage from '@/components/QuestionPage';
 import { usePathname } from 'next/navigation';
 import './index.css'
 
@@ -12,7 +12,7 @@ const QuizPage: React.FC = () => {
 
     return (
         <div className="app">
-            {/* ... other content ... */}
+
             {quizId !== undefined ? <QuestionPage quizId={quizId} /> : null}
         </div>
     );

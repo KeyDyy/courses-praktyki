@@ -93,7 +93,6 @@ model User {
   votes       Vote[]
 }
 
-// Tables
 model Answer {
   answer_id   Int      @id @default(autoincrement())
   question_id Int

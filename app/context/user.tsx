@@ -1,16 +1,16 @@
-// user.tsx
+
 'use client'
 import { createContext, useState, useEffect, useContext, ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { checkUserExistence, createUser } from "@/utils/createUser"; // Adjust the import path
+import { checkUserExistence, createUser } from "@/utils/createUser";
 import { Language, lessFortunate } from "@prisma/client";
 
 
 interface User {
   id: string | null;
-  first_name: string | null; // Upewnij się, że to pole jest dostępne w User model
-  last_name: string | null; // Upewnij się, że to pole jest dostępne w User model
+  first_name: string | null;
+  last_name: string | null;
   email: string | null;
   image: string | null;
   language: Language | null;
@@ -64,8 +64,6 @@ const Provider = ({ children }: ProviderProps) => {
             console.error('User not found in database');
           }
 
-          // Check if user with the given user_id exists in the database using utility function
-          //const userExists = await checkUserExistence(id);
 
           if (!userFromSupabase) {
             // User doesn't exist, create it using utility function
@@ -127,7 +125,7 @@ export default Provider;
 const extractNamesFromEmail = (email: string): [string, string | null] => {
   const parts = email.split('@')[0].split('.');
   const firstName = parts[0] || email;
-  const lastNamePart = parts.slice(1).join('.'); // Łącz część z kropkami jako nazwisko
-  const lastName = lastNamePart.replace(/[^a-zA-Z]/g, ''); // Usuń wszystko oprócz liter
+  const lastNamePart = parts.slice(1).join('.');
+  const lastName = lastNamePart.replace(/[^a-zA-Z]/g, '');
   return [firstName, lastName || null];
 };

@@ -1,14 +1,14 @@
 // pages/index.tsx
 'use client'
-// pages/index.tsx
-import { useUser } from '@/app/context/user'; // Adjust the import path
+import { useUser } from '@/app/context/user';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/utils/supabase';
 import PostCard from '@/components/Postcard';
 import Layout from '@/components/layout';
+import Link from 'next/link';
 
 export default function Home() {
-    const [posts, setPosts] = useState<any[]>([]); // Provide the correct type for posts
+    const [posts, setPosts] = useState<any[]>([]);
     const { user } = useUser();
 
     useEffect(() => {
@@ -19,15 +19,21 @@ export default function Home() {
             if (data) {
                 setPosts(data);
             }
-            // Handle error
         }
         fetchPosts();
     }, []);
 
+
+
     return (
         <Layout>
             <div className="p-8">
-                {!user && <p>Please log in to see the posts.</p>}
+                {!user && <div>
+                    <Link href="/auth">
+                        <p>Please log in to see the posts.</p>
+                    </Link>
+
+                </div >}
                 {user &&
                     posts.map((post) => (
                         <PostCard key={post.post_id} post={post} />

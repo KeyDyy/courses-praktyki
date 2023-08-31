@@ -2,7 +2,7 @@
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
-import Link from 'next/link';
+
 
 export default function AuthPage() {
     const supabase = createClientComponentClient();
@@ -26,7 +26,7 @@ export default function AuthPage() {
             </div>
 
             <div className="bottom-image">
-                <img src="/unia.jpg" alt="Logo" className="rounded-image"/>
+                <img src="/unia.jpg" alt="Logo" className="rounded-image" />
             </div>
         </div>
     )

@@ -1,5 +1,3 @@
-// LanguageSelector.tsx
-
 import { useState } from "react";
 
 interface LanguageSelectorProps {
@@ -11,7 +9,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ onSelectLanguage })
 
     const handleLanguageChange = (language: string) => {
         setSelectedLanguage(language);
-        onSelectLanguage(language); // Notify parent component about language change
+        onSelectLanguage(language);
     };
 
     return (
@@ -23,7 +21,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ onSelectLanguage })
             >
                 <option value="en">English</option>
                 <option value="es">Español</option>
-                {/* Add more language options */}
+
             </select>
         </div>
     );

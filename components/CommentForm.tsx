@@ -1,8 +1,7 @@
-// CommentForm.tsx
 import React, { useState } from 'react';
 import { supabase } from '@/utils/supabase';
 import { useUser } from '@/app/context/user';
-import styles from './CommentForm.module.css'; // Import the CSS file
+import styles from './CommentForm.module.css';
 
 interface CommentFormProps {
     postId: number;

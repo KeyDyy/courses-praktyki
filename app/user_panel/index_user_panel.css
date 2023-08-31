@@ -1,4 +1,4 @@
-.app{
+.app {
   justify-content: flex-start;
 }
 
@@ -9,8 +9,8 @@
   display: flex;
   gap: var(--g);
   width: calc(2 * var(--s) + var(--g));
-  margin-top: 10%; /* Dodaj margines na górze */
-  margin-bottom: auto; /* Dodaj margines na dole */
+  margin-top: 10%;
+  margin-bottom: auto;
 }
 
 .gallery-user_panel img {
@@ -19,16 +19,16 @@
   object-fit: cover;
   cursor: pointer;
   transition: transform 0.5s, filter 0.5s;
-  
+
 }
 
 .gallery-user_panel img:hover {
   transform: scale(1.2);
-  
+
 }
 
 
-/* Dodaj pełną responsywność */
+
 @media screen and (max-width: 768px) {
   .center-image-user_panel {
     width: 100%;

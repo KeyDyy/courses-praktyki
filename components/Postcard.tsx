@@ -5,14 +5,12 @@ import VoteCount from './fetchForum';
 import { VoteType } from '@prisma/client';
 import './PostDetail.css'
 
-import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
-
 type ItemType = 'post' | 'comment';
 interface Post {
     post_id: number;
     title: string;
     text: string;
-    // ... other properties
+
 }
 
 interface PostCardProps {
