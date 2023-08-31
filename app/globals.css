@@ -51,7 +51,7 @@ button:hover {
   width: 100%;
   margin-bottom: 1%;
   position: fixed;
-  top: 0; 
+  top: 0;
 }
 
 .navbar-list-right {
@@ -126,13 +126,15 @@ button:hover {
   .app {
     padding: 10px;
   }
-  .navbar{
+
+  .navbar {
     font-size: 60%;
     text-align: center;
     padding: 0%;
     margin: 0%;
   }
-  #welcome{
+
+  #welcome {
     display: none;
   }
 

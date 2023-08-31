@@ -1,11 +1,32 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { useUser } from "@/app/context/user";
 import Navbar from "@/components/Navbar";
+import { userStats as fetchUserStats } from "@/utils/statsUser";
 import "./index.css";
 
 const ProfilePage = () => {
   const { user } = useUser();
+  const [userStats, setUserStats] = useState<Array<{
+    module_id: number;
+    module_name: string;
+    quizResult_points: number | null;
+    totalPossiblePoints: number;
+    attemptDate: string;
+    bestResult: number | null;
+  }> | null>(null);
+
+  useEffect(() => {
+    async function fetchUserQuizStats() {
+      if (user !== null && user.id !== null) {
+        const stats = await fetchUserStats(user.id);
+        setUserStats(stats);
+      }
+    }
+
+    fetchUserQuizStats();
+  }, [user]);
 
   if (!user) {
     return (
@@ -51,8 +72,25 @@ const ProfilePage = () => {
             </div>
           </div>
           <div className="right-section">
-          <div className="userAchievements">
-              <h1>Statystyki</h1>
+            <div className="userAchievements">
+              {userStats !== null ? (
+                userStats.map((stat, index) => (
+                  <div key={index}>
+                    {stat.totalPossiblePoints > 0 && (
+                      <p>
+                        Statystyki dla modułu "{stat.module_name}":{" "}
+                        {stat.bestResult !== null
+                          ? `${stat.bestResult} / ${stat.totalPossiblePoints}`
+                          : "Brak dostępnych statystyk"}
+                        {"\t - \t"}
+                        Data podejścia: {stat.attemptDate}
+                      </p>
+                    )}
+                  </div>
+                ))
+              ) : (
+                <p>Brak dostępnych statystyk</p>
+              )}
             </div>
           </div>
         </div>

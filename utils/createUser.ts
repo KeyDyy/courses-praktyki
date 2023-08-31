@@ -16,6 +16,13 @@ export interface User {
     // Dodaj pozostałe pola modelu User
 }
 
+export interface QuizResultStats {
+    quizTitle: string;
+    bestPoints: string;
+    totalQuestions: number;
+    percentage: number;
+  }
+
 
 export async function checkUserExistence(userId: string): Promise<User | null> {
     console.error('Checking user existence...');
