@@ -58,6 +58,7 @@ const Provider = ({ children }: ProviderProps) => {
               image: userFromSupabase.picture || null,
               language: userFromSupabase.language || null,
               lessFortunate: userFromSupabase.lessFortunate || null,
+
             });
           } else {
             console.error('User not found in database');
@@ -68,7 +69,7 @@ const Provider = ({ children }: ProviderProps) => {
 
           if (!userFromSupabase) {
             // User doesn't exist, create it using utility function
-            const createUserSuccess = await createUser(id, firstName, lastName);
+            const createUserSuccess = await createUser(id, firstName, lastName, email);
             if (!createUserSuccess) {
               console.error('Error creating user');
             }
